@@ -1,8 +1,8 @@
 <nav class="bg-white border-green-200 dark:bg-green-600 rounded-b-3xl">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 ">
         <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
-            {{-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" /> --}}
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Desa</span>
+            <img src="logo.png" class="h-12" alt="Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap  dark:text-white">Suanae</span>
         </a>
         <button data-collapse-toggle="navbar-default" type="button"
             class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-green-500 rounded-lg md:hidden hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-200 dark:text-green-400 dark:hover:bg-green-700 dark:focus:ring-green-600"
@@ -20,7 +20,7 @@
                     <a href="{{ route('home') }}"
                         class="block py-2 px-3 rounded-lg md:p-0 font-bold
             {{ request()->routeIs('home') ? 'text-white bg-green-700 md:bg-transparent md:text-green-700 dark:text-white md:dark:text-yellow-300' : 'text-green-900 hover:bg-green-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 dark:text-white md:dark:hover:text-yellow-500 dark:hover:bg-green-700 dark:hover:text-white md:dark:hover:bg-transparent' }}">
-                        Home
+                        Beranda
                     </a>
                 </li>
                 <li>

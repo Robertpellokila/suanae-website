@@ -17,6 +17,7 @@
 <body class="antialiased">
     @include('navbar')
     @include('whatsapp')
+    
 </body>
 
 </html>

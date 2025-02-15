@@ -1,91 +1,57 @@
 @include('app')
 
 
-<div id="default-carousel" class="relative w-full" data-carousel="slide">
-    <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-        <!-- Item 1 -->
-       <div class="hidden h-full duration-700 ease-in-out relative" data-carousel-item>
-           <img src="/docs/images/carousel/carousel-1.svg" class="absolute block w-full h-full object-cover" alt="...">
-           <div class="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/50 text-white p-4">
-               <h2 class="text-2xl md:text-4xl font-bold">Judul Slide 1</h2>
-               <p class="text-sm md:text-lg mt-2">Deskripsi singkat tentang slide pertama.</p>
-           </div>
-       </div>
-       <!-- Item 2 -->
-       <div class="hidden h-full duration-700 ease-in-out relative" data-carousel-item>
-           <img src="/docs/images/carousel/carousel-2.svg" class="absolute block w-full h-full object-cover" alt="...">
-           <div class="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/50 text-white p-4">
-               <h2 class="text-2xl md:text-4xl font-bold">Judul Slide 2</h2>
-               <p class="text-sm md:text-lg mt-2">Deskripsi singkat tentang slide kedua.</p>
-           </div>
-       </div>
-       <!-- Item 3 -->
-       <div class="hidden h-full duration-700 ease-in-out relative" data-carousel-item>
-           <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full h-full object-cover" alt="...">
-           <div class="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/50 text-white p-4">
-               <h2 class="text-2xl md:text-4xl font-bold">Judul Slide 3</h2>
-               <p class="text-sm md:text-lg mt-2">Deskripsi singkat tentang slide ketiga.</p>
-           </div>
-       </div>
-       <!-- Item 4 -->
-       <div class="hidden h-full duration-700 ease-in-out relative" data-carousel-item>
-           <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full h-full object-cover" alt="...">
-           <div class="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/50 text-white p-4">
-               <h2 class="text-2xl md:text-4xl font-bold">Judul Slide 4</h2>
-               <p class="text-sm md:text-lg mt-2">Deskripsi singkat tentang slide keempat.</p>
-           </div>
-       </div>
-       <!-- Item 5 -->
-       <div class="hidden h-full duration-700 ease-in-out relative" data-carousel-item>
-           <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full h-full object-cover" alt="...">
-           <div class="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/50 text-white p-4">
-               <h2 class="text-2xl md:text-4xl font-bold">Judul Slide 5</h2>
-               <p class="text-sm md:text-lg mt-2">Deskripsi singkat tentang slide kelima.</p>
-           </div>
-       </div>
-   </div>
-    <!-- Slider indicators -->
-    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
-            data-carousel-slide-to="0"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
-            data-carousel-slide-to="1"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
-            data-carousel-slide-to="2"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
-            data-carousel-slide-to="3"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
-            data-carousel-slide-to="4"></button>
+{{-- Open Carousel --}}
+<div id="carousel-wrapper" class="relative w-full overflow-hidden">
+    <div id="carousel-inner" class="flex transition-transform duration-700 ease-in-out">
+        @foreach ($images as $index => $image)
+        <div class="w-full flex-shrink-0 relative">
+            <img src="{{ asset('/storage/' . $image->image) }}" class="w-full h-60 md:h-96 object-cover rounded-3xl"
+                alt="...">
+            <div
+                class="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/50 text-white p-4 rounded-3xl">
+                <h2 class="text-3xl md:text-4xl font-bold">{{ $image->title }}</h2>
+                <p class="text-sm md:text-lg mt-2">{{ $image->description }}</p>
+            </div>
+        </div>
+        @endforeach
     </div>
-    <!-- Slider controls -->
-    <button type="button"
-        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        data-carousel-prev>
-        <span
-            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M5 1 1 5l4 4" />
-            </svg>
-            <span class="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button"
-        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        data-carousel-next>
-        <span
-            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="m1 9 4-4-4-4" />
-            </svg>
-            <span class="sr-only">Next</span>
-        </span>
-    </button>
+
+    <!-- Slider Indicators -->
+    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3">
+        @foreach ($images as $index => $image)
+        <button class="indicator w-3 h-3 rounded-full bg-gray-300" data-index="{{ $index }}"></button>
+        @endforeach
+    </div>
+
+    <!-- Slider Controls -->
+    <button id="prevSlide"
+        class="absolute top-1/2 left-5 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-2 rounded-full">❮</button>
+    <button id="nextSlide"
+        class="absolute top-1/2 right-5 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-2 rounded-full">❯</button>
 </div>
+{{-- Close Carousel --}}
+
+<section class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+    <h2 class="text-2xl md:text-4xl font-bold text-gray-900">Sambutan Kepala Desa</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center p-8">
+        <!-- Gambar -->
+        <div class="flex justify-center items-center">
+            <img class="rounded-sm w-36 h-36 object-cover" src="{{ asset('logo.png') }}" alt="Extra large avatar">
+        </div>
+
+        <!-- Teks -->
+        <div>
+
+            <p class="text-gray-700 text-lg mt-4">
+                Ini adalah deskripsi teks yang berada di samping gambar. Bisa digunakan untuk menjelaskan sesuatu atau
+                memberikan informasi tambahan.
+            </p>
+            <a href="#"
+                class="mt-4 inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">Selengkapnya</a>
+        </div>
+    </div>
+</section>
 
 
 <section class="bg-white ">
@@ -113,3 +79,55 @@
 </section>
 
 @include('footer')
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const carouselInner = document.getElementById("carousel-inner");
+        const slides = document.querySelectorAll("#carousel-inner > div");
+        const indicators = document.querySelectorAll(".indicator");
+        const prevButton = document.getElementById("prevSlide");
+        const nextButton = document.getElementById("nextSlide");
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        function updateSlide() {
+            // Pindahkan slide
+            carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            // Update indikator
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle("bg-gray-800", index === currentIndex);
+                indicator.classList.toggle("bg-gray-300", index !== currentIndex);
+            });
+        }
+
+        // Next button
+        nextButton.addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlide();
+        });
+
+        // Prev button
+        prevButton.addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlide();
+        });
+
+        // Indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener("click", () => {
+                currentIndex = index;
+                updateSlide();
+            });
+        });
+
+        // Auto-slide setiap 3 detik
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlide();
+        }, 3000);
+
+        updateSlide(); // Inisialisasi pertama kali
+    });
+</script>
