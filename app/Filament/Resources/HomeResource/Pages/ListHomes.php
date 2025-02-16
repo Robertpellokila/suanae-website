@@ -14,7 +14,7 @@ class ListHomes extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make()->label('New Banner'),
+            Actions\CreateAction::make()->label('Banner Baru'),
         ];
     }
 }

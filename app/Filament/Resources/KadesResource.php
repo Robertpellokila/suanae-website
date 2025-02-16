@@ -2,51 +2,51 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\HomeResource\Pages;
-use App\Filament\Resources\HomeResource\RelationManagers;
-use App\Models\Home;
+use App\Filament\Resources\KadesResource\Pages;
+use App\Filament\Resources\KadesResource\RelationManagers;
+use App\Models\Kades;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TiptapEditor;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class HomeResource extends Resource
+class KadesResource extends Resource
 {
-    protected static ?string $model = Home::class;
+    protected static ?string $model = Kades::class;
 
     protected static ?string $navigationGroup = 'Kelola Halaman Beranda';
 
 
-    protected static ?string $navigationIcon = 'heroicon-o-computer-desktop';
+    protected static ?string $navigationIcon = 'heroicon-o-user';
 
-    protected static ?string $navigationLabel = 'Gambar Banner';
-
-
+    protected static ?string $navigationLabel = 'Data Kades';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('title')
-                    ->label('Judul')
-                    ->required(),
-                Textarea::make('description')
-                    ->label('Deskripsi')
-                    ->required(),
+                TextInput::make('name')
+                    ->label('Nama')
+                    ->columnSpanFull(),
+                RichEditor::make('sambutan')
+                    ->label('Sambutan')
+                    ->columnSpanFull(),
                 FileUpload::make('image')
                     ->label('Gambar')
                     ->required()
                     ->disk('public')
                     ->directory('home')
                     ->preserveFilenames()
+                    ->columnSpanFull()
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
             ]);
     }
@@ -55,12 +55,13 @@ class HomeResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')
-                    ->label('Judul'),
-                TextColumn::make('description')
-                    ->label('Deskripsi'),
+                TextColumn::make('name')
+                    ->label('Nama')
+                    ->searchable()
+                    ->sortable(),
                 ImageColumn::make('image')
-                    ->label('Gambar'),
+                    ->label('Gambar')
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -74,16 +75,16 @@ class HomeResource extends Resource
                 ]),
             ]);
     }
+
     public static function getPluralLabel(): string
     {
-        return 'Banner';
+        return 'Data Kades';
     }
 
     public static function getModelLabel(): string
     {
-        return 'Banner';
+        return 'Data Kades';
     }
-
 
     public static function getRelations(): array
     {
@@ -95,9 +96,9 @@ class HomeResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListHomes::route('/'),
-            'create' => Pages\CreateHome::route('/create'),
-            'edit' => Pages\EditHome::route('/{record}/edit'),
+            'index' => Pages\ListKades::route('/'),
+            'create' => Pages\CreateKades::route('/create'),
+            'edit' => Pages\EditKades::route('/{record}/edit'),
         ];
     }
 }

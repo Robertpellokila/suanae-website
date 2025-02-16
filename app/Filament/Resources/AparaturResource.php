@@ -2,12 +2,11 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\HomeResource\Pages;
-use App\Filament\Resources\HomeResource\RelationManagers;
-use App\Models\Home;
+use App\Filament\Resources\AparaturResource\Pages;
+use App\Filament\Resources\AparaturResource\RelationManagers;
+use App\Models\Aparatur;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -18,35 +17,32 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class HomeResource extends Resource
+class AparaturResource extends Resource
 {
-    protected static ?string $model = Home::class;
+    protected static ?string $model = Aparatur::class;
 
-    protected static ?string $navigationGroup = 'Kelola Halaman Beranda';
-
-
-    protected static ?string $navigationIcon = 'heroicon-o-computer-desktop';
-
-    protected static ?string $navigationLabel = 'Gambar Banner';
+    protected static ?string $navigationGroup = 'Kelola Aparatur Desa';
 
 
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('title')
-                    ->label('Judul')
+                TextInput::make('name')
+                    ->label('Nama')
                     ->required(),
-                Textarea::make('description')
-                    ->label('Deskripsi')
+                TextInput::make('jabatan')
+                    ->label('Jabatan')
                     ->required(),
                 FileUpload::make('image')
                     ->label('Gambar')
                     ->required()
                     ->disk('public')
-                    ->directory('home')
+                    ->directory('aparatur')
                     ->preserveFilenames()
+                    ->columnSpanFull()
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
             ]);
     }
@@ -55,12 +51,17 @@ class HomeResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')
-                    ->label('Judul'),
-                TextColumn::make('description')
-                    ->label('Deskripsi'),
+                TextColumn::make('name')
+                    ->label('Nama')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('jabatan')
+                    ->label('Jabatan')
+                    ->sortable()
+                    ->searchable(),
                 ImageColumn::make('image')
-                    ->label('Gambar'),
+                ->label('Gambar')
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -74,16 +75,16 @@ class HomeResource extends Resource
                 ]),
             ]);
     }
+
     public static function getPluralLabel(): string
     {
-        return 'Banner';
+        return 'Aparatur Desa';
     }
 
     public static function getModelLabel(): string
     {
-        return 'Banner';
+        return 'Aparatur Desa';
     }
-
 
     public static function getRelations(): array
     {
@@ -95,9 +96,9 @@ class HomeResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListHomes::route('/'),
-            'create' => Pages\CreateHome::route('/create'),
-            'edit' => Pages\EditHome::route('/{record}/edit'),
+            'index' => Pages\ListAparaturs::route('/'),
+            'create' => Pages\CreateAparatur::route('/create'),
+            'edit' => Pages\EditAparatur::route('/{record}/edit'),
         ];
     }
 }

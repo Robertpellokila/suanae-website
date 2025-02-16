@@ -1,7 +1,7 @@
 <nav class="bg-white border-green-200 dark:bg-green-600 rounded-b-3xl">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 ">
         <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="logo.png" class="h-12" alt="Logo" />
+            <img src="{{ url('logo.png') }}" class="h-12" alt="Logo" />
             <span class="self-center text-2xl font-semibold whitespace-nowrap  dark:text-white">Suanae</span>
         </a>
         <button data-collapse-toggle="navbar-default" type="button"
@@ -26,7 +26,7 @@
                 <li>
                     <a href="{{ route('profil') }}"
                         class="block py-2 px-3 rounded-lg md:p-0 font-bold
-            {{ request()->routeIs('profil') ? 'text-white bg-green-700 md:bg-transparent md:text-green-700 dark:text-white md:dark:text-yellow-300' : 'text-green-900 hover:bg-green-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 dark:text-white md:dark:hover:text-yellow-500 dark:hover:bg-green-700 dark:hover:text-white md:dark:hover:bg-transparent' }}">
+            {{ request()->routeIs(['profil', 'sejarah', 'aparatur']) ? 'text-white bg-green-700 md:bg-transparent md:text-green-700 dark:text-white md:dark:text-yellow-300' : 'text-green-900 hover:bg-green-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 dark:text-white md:dark:hover:text-yellow-500 dark:hover:bg-green-700 dark:hover:text-white md:dark:hover:bg-transparent' }}">
                         Profil Desa
                     </a>
                 </li>
@@ -40,7 +40,7 @@
                 <li>
                     <a href="{{ route('berita') }}"
                         class="block py-2 px-3 rounded-lg md:p-0 font-bold
-        {{ request()->routeIs('berita') ? 'text-white bg-green-700 md:bg-transparent md:text-green-700 dark:text-white md:dark:text-yellow-300' : 'text-green-900 hover:bg-green-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 dark:text-white md:dark:hover:text-yellow-500 dark:hover:bg-green-700 dark:hover:text-white md:dark:hover:bg-transparent' }}">
+        {{ request()->routeIs(['berita', 'berita.detail']) ? 'text-white bg-green-700 md:bg-transparent md:text-green-700 dark:text-white md:dark:text-yellow-300' : 'text-green-900 hover:bg-green-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 dark:text-white md:dark:hover:text-yellow-500 dark:hover:bg-green-700 dark:hover:text-white md:dark:hover:bg-transparent' }}">
                         Berita
                     </a>
                 </li>

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\HomeResource\Pages;
-use App\Filament\Resources\HomeResource\RelationManagers;
-use App\Models\Home;
+use App\Filament\Resources\GaleriResource\Pages;
+use App\Filament\Resources\GaleriResource\RelationManagers;
+use App\Models\Galeri;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
@@ -18,35 +18,30 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class HomeResource extends Resource
+class GaleriResource extends Resource
 {
-    protected static ?string $model = Home::class;
+    protected static ?string $model = Galeri::class;
 
-    protected static ?string $navigationGroup = 'Kelola Halaman Beranda';
-
-
-    protected static ?string $navigationIcon = 'heroicon-o-computer-desktop';
-
-    protected static ?string $navigationLabel = 'Gambar Banner';
+    protected static ?string $navigationGroup = 'Kelola Halaman Galeri';
 
 
+    protected static ?string $navigationIcon = 'heroicon-o-photo';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('title')
-                    ->label('Judul')
                     ->required(),
                 Textarea::make('description')
-                    ->label('Deskripsi')
                     ->required(),
                 FileUpload::make('image')
                     ->label('Gambar')
                     ->required()
                     ->disk('public')
-                    ->directory('home')
+                    ->directory('galeri')
                     ->preserveFilenames()
+                    ->columnSpanFull()
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif']),
             ]);
     }
@@ -56,11 +51,16 @@ class HomeResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('title')
-                    ->label('Judul'),
+                    ->label('Judul')
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('description')
-                    ->label('Deskripsi'),
+                    ->label('Deskripsi')
+                    ->sortable()
+                    ->searchable(),
                 ImageColumn::make('image')
-                    ->label('Gambar'),
+                ->label('Gambar')
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -76,14 +76,13 @@ class HomeResource extends Resource
     }
     public static function getPluralLabel(): string
     {
-        return 'Banner';
+        return 'Galeri';
     }
 
     public static function getModelLabel(): string
     {
-        return 'Banner';
+        return 'Galeri';
     }
-
 
     public static function getRelations(): array
     {
@@ -95,9 +94,9 @@ class HomeResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListHomes::route('/'),
-            'create' => Pages\CreateHome::route('/create'),
-            'edit' => Pages\EditHome::route('/{record}/edit'),
+            'index' => Pages\ListGaleris::route('/'),
+            'create' => Pages\CreateGaleri::route('/create'),
+            'edit' => Pages\EditGaleri::route('/{record}/edit'),
         ];
     }
 }
