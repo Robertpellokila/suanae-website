@@ -32,8 +32,9 @@
 </div>
 {{-- Close Carousel --}}
 
-<section class="bg-white ">
-    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+{{-- Open welcome --}}
+<section class="bg-white " data-aos="fade-in" data-aos-duration="1500">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16" >
         <h1
             class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl drop-shadow-[2px_2px_5px_rgba(255,255,0,0.75)]">
             Selamat Datang di Website Desa Suanae</h1>
@@ -56,8 +57,10 @@
         </div>
     </div>
 </section>
+{{-- close welcome --}}
 
-<section class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+{{-- Open sambutan --}}
+<section class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16" data-aos="fade-up" data-aos-duration="1500">
     <h2 class="text-2xl md:text-4xl font-bold text-gray-900">Sambutan Kepala Desa</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center p-8">
@@ -85,15 +88,16 @@
         @endforeach
     </div>
 </section>
+{{-- close sambutan --}}
 
-
+{{-- Open aparatur desa --}}
 <section class="py-4 px-4 mx-auto max-w-screen-xl text-center lg:py-8">
     <h2 class="text-2xl md:text-4xl font-bold text-gray-900">Aparatur Desa</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center p-8">
         @foreach ($aparatur as $item)
         <div
-            class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-green-800 dark:border-green-700">
+            class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-green-800 dark:border-green-700" data-aos="flip-left" data-aos-duration="1500">
             <div class="flex justify-end px-4 pt-4">
 
             </div>
@@ -113,6 +117,8 @@
             class="mt-4 inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">Selengkapnya</a>
     </div>
 </section>
+{{-- Close aparatur desa --}}
+
 
 {{-- awal berita section --}}
 <section class="py-4 px-4 mx-auto max-w-screen-xl text-center lg:py-8">
@@ -121,8 +127,8 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center p-8">
         @forelse ($berita as $item)
         <div
-            class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-green-800 dark:border-green-700">
-            <div class="flex justify-end px-4 pt-4">
+            class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-green-800 dark:border-green-700" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="flex justify-end px-4 pt-4" >
 
             </div>
             <div class="flex flex-col items-center pb-10">
@@ -153,7 +159,7 @@
 
 
 {{-- awal lokasi --}}
-<section class="py-4 px-4 mx-auto max-w-screen-xl text-center lg:py-8">
+<section class="py-4 px-4 mx-auto max-w-screen-xl text-center lg:py-8"  data-aos="zoom-down" data-aos-duration="1500">
     <!-- Peta Lokasi -->
     <div>
         <h2 class="text-2xl md:text-4xl font-bold text-gray-900 p-4">Lokasi Desa</h2>

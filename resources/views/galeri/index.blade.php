@@ -4,7 +4,7 @@
     <h2 class="text-2xl md:text-4xl font-bold text-green-700 p-2">Galeri Desa</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             @foreach ($galeri as $item)
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden" data-aos="flip-down" data-aos-duration="1000">
                 <!-- Gambar -->
                 <div class="relative group">
                     <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"

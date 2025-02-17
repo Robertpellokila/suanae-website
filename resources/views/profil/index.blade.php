@@ -1,12 +1,11 @@
 @include('app')
 
-
-
-<section class="py-2 px-4 mx-auto max-w-screen-xl text-center lg:py-4">
+{{-- Open Bagan --}}
+<section class="py-2 px-4 mx-auto max-w-screen-xl text-center lg:py-4" >
     <h2 class="text-2xl md:text-4xl font-bold text-green-700 pb-6">Bagan Organisasi dan Tata Kerja Desa</h2>
     <div class="bg-white rounded-lg shadow-md overflow-hidden">
         <!-- Gambar -->
-        <div class="relative group p-4">
+        <div class="relative group p-4" data-aos="zoom-in" data-aos-duration="1500">
             <img src="{{ asset('storage/' . $profil->bagan) }}" alt="bagan"
                 class="w-full h-full object-contain rounded-t-lg transform transition duration-300 group-hover:scale-105 cursor-pointer"
                 data-modal-target="imageModal{{ $profil->id }}" data-modal-toggle="imageModal{{ $profil->id }}">
@@ -30,13 +29,15 @@
         </div>
     </div>
 </section>
+{{-- Close Bagan --}}
 
+{{-- open aparatur --}}
 <section class="py-4 px-4 mx-auto max-w-screen-xl text-center lg:py-8">
     <h2 class="text-2xl md:text-4xl font-bold text-green-700">Aparatur Desa</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center p-8">
         @foreach ($kades as $item)
-        <div class="flex justify-center">
+        <div class="flex justify-center" data-aos="flip-right" data-aos-duration="1500">
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm">
 
                 <img class=" w-full h-72 object-contain mx-auto m-2" src="{{ asset('/storage/' . $item->image) }}"
@@ -49,7 +50,7 @@
         </div>
         @endforeach
         @foreach ($aparatur as $item)
-        <div class="flex justify-center">
+        <div class="flex justify-center" data-aos="flip-right" data-aos-duration="1500">
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm">
 
                 <img class=" w-full h-72 object-contain mx-auto m-2" src="{{ asset('/storage/' . $item->image) }}"
@@ -68,8 +69,10 @@
             class="mt-4 inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">Selengkapnya</a>
     </div>
 </section>
+{{-- close aparatur --}}
 
-{{-- awal visi dan misi --}}
+
+{{-- awal visi --}}
 <section class="py-2 px-4 mx-auto max-w-screen-xl text-center lg:py-4">
     <h2 class="text-2xl md:text-4xl font-bold text-green-700">Visi</h2>
     <div class="grid grid-cols-1 md:grid-cols-1 gap-6 items-center p-4">
@@ -81,13 +84,15 @@
                 Visi adalah suatu gambaran yang menantang tentang keadaan masa depan yang diinginkan dengan melihat
                 potensi dan kebutuhan desa. Maka berdasarkan pengertian tersebut Visi yang kami usung adalah:
             </p>
-            <h4 class="md:text-3xl font-bold text-gray-900 mt-2">{!! $profil->visi !!}
+            <h4 class="md:text-3xl font-bold text-gray-900 mt-2" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300" data-aos-offset="0" data-aos-duration="1000">{!! $profil->visi !!}
             </h4>
 
         </div>
     </div>
 </section>
+{{-- akhir visi --}}
 
+{{-- awal misi --}}
 <section class="py-2 px-4 mx-auto max-w-screen-xl text-center lg:py-4">
     <h2 class="text-2xl md:text-4xl font-bold text-green-700">Misi</h2>
     <div class="grid grid-cols-1 md:grid-cols-1 gap-6 items-center p-4">
@@ -106,7 +111,7 @@
             </p>
             <ul class="w-fit mx-auto space-y-1 text-gray-900 list-inside dark:text-gray-900 mt-2 text-left">
                 @foreach ($profil->misi as $item)
-                <li class="flex items-center font-bold mb-2">
+                <li class="flex items-center font-bold mb-2" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300" data-aos-offset="0" data-aos-duration="1000">
                     <svg class="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 shrink-0" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                         <path
@@ -121,13 +126,14 @@
         </div>
     </div>
 </section>
+{{-- akhir misi --}}
 
-
+{{-- open sejarah --}}
 <section class="py-4 px-4 mx-auto max-w-screen-xl text-center lg:py-8">
     <h2 class="text-2xl md:text-4xl font-bold text-green-700">Sejarah Desa</h2>
 
     <div class="items-center p-4">
-        <p class="text-gray-900 text-xl p-4 text-justify " style="text-indent: 4rem;">
+        <p class="text-gray-900 text-xl p-4 text-justify " style="text-indent: 4rem;" data-aos="zoom-in" data-aos-duration="1500">
             {!! \Illuminate\Support\Str::words(strip_tags($profil->sejarah), 100, '...') !!}
         </p>
     </div>
@@ -136,12 +142,15 @@
             class="mt-4 inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">Selengkapnya</a>
     </div>
 </section>
+{{-- Akhir sejarah --}}
+
+{{-- Awal nama kepala desa --}}
 <section class="py-4 px-4 mx-auto max-w-screen-xl text-center lg:py-8">
 
     <div class="relative overflow-x-auto shadow-lg sm:rounded-lg">
         <h2 class="text-2xl md:text-4xl font-bold text-green-700">Daftar Nama Kepala Desa</h2>
         <div class="p-4">
-            <table class="w-full text-sm text-left rtl:text-right rounded-md text-gray-500 dark:text-gray-400">
+            <table class="w-full text-sm text-left rtl:text-right rounded-md text-gray-500 dark:text-gray-400" data-aos="zoom-in" data-aos-duration="1500">
                 <caption
                     class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-green-800 rounded-t-md">
                     Daftar Nama Kepala Desa Suanae
@@ -182,12 +191,15 @@
     </div>
 
 </section>
+{{-- Akhir nama kepala desa --}}
+
+{{-- Awal kejadian --}}
 <section class="py-4 px-4 mx-auto max-w-screen-xl text-center lg:py-8">
 
     <div class="relative overflow-x-auto shadow-lg sm:rounded-lg">
         <h2 class="text-2xl md:text-4xl font-bold text-green-700">Data Sejarah Kejadian Baik Dan Buruk</h2>
         <div class="p-4">
-            <table class="w-full text-sm text-left rtl:text-right rounded-md text-gray-500 dark:text-gray-400">
+            <table class="w-full text-sm text-left rtl:text-right rounded-md text-gray-500 dark:text-gray-400" data-aos="zoom-in" data-aos-duration="1500">
                 <thead class="text-md text-gray-700 uppercase bg-gray-50 dark:bg-green-700 dark:text-white">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -222,4 +234,6 @@
     </div>
 
 </section>
+{{-- akhir kejadian --}}
+
 @include('footer')

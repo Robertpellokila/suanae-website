@@ -1,8 +1,8 @@
 @include('app')
 <section class="py-2 px-4 mx-auto max-w-screen-xl text-center lg:py-4">
     <h2 class="text-2xl md:text-4xl font-bold text-green-700 p-2">Desa Suanae</h2>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 p-4">
-        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-green-600 dark:border-green-900">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-green-600 dark:border-green-900" data-aos="flip-down" data-aos-duration="1000">
             <div class="flex items-center space-x-4">
                 <div class="p-3 text-white bg-blue-500 rounded-lg">
                     <!-- Ikon -->
@@ -17,7 +17,7 @@
             </div>
         </div>
     
-        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-green-600 dark:border-green-900">
+        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-green-600 dark:border-green-900" data-aos="flip-down" data-aos-duration="1000">
             <div class="flex items-center space-x-4">
                 <div class="p-3 text-white bg-blue-500 rounded-lg">
                     <!-- Ikon -->
@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-green-600 dark:border-green-900">
+        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-green-600 dark:border-green-900" data-aos="flip-down" data-aos-duration="1000">
             <div class="flex items-center space-x-4">
                 <div class="p-3 text-white bg-blue-500 rounded-lg">
                     <!-- Ikon -->
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-green-600 dark:border-green-900">
+        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-green-600 dark:border-green-900" data-aos="flip-down" data-aos-duration="1000">
             <div class="flex items-center space-x-4">
                 <div class="p-3 text-white bg-blue-500 rounded-lg">
                     <!-- Ikon -->
@@ -63,8 +63,8 @@
     
     <div class="bg-white p-6 rounded-lg shadow-md mt-8">
         <h2 class="text-xl font-semibold text-gray-700 text-center mb-4">Grafik Perkembangan Penduduk</h2>
-        <div class="h-64">
-            <canvas id="chartPenduduk"></canvas>
+        <div class="h-64" >
+            <canvas id="chartPenduduk" data-aos="zoom-in" data-aos-duration="1000"></canvas>
         </div>
     </div>
 

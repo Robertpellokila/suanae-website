@@ -4,7 +4,7 @@
     <div class="container mx-auto p-6">
         <div class="flex flex-wrap justify-center sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @forelse ($berita as $item)
-            <div class="max-w-xs rounded-lg border border-gray-200 bg-white shadow-md">
+            <div class="max-w-xs rounded-lg border border-gray-200 bg-white shadow-md" data-aos="flip-down" data-aos-duration="1000">
                 <a href="{{ route('berita.detail', ['berita' => $item->slug]) }}">
                     <img class="rounded-t-lg object-cover" src="{{ asset('/storage/' . $item->image) }}"
                         alt="{{ $item->title }}">
