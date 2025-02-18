@@ -67,7 +67,11 @@ class KadesResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+            ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -98,6 +102,7 @@ class KadesResource extends Resource
         return [
             'index' => Pages\ListKades::route('/'),
             'create' => Pages\CreateKades::route('/create'),
+            'view' => Pages\ViewKades::route('/{record}'),
             'edit' => Pages\EditKades::route('/{record}/edit'),
         ];
     }

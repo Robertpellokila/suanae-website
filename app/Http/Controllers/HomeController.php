@@ -19,4 +19,9 @@ class HomeController extends Controller
         
         return view('home', compact('images', 'berita', 'kades', 'aparatur' ));
     }
+
+    public function show() {
+        $show = Kades::first();
+        return view('profil.sambutan', compact('show'));
+    }
 }

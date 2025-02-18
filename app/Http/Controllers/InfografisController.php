@@ -15,4 +15,6 @@ class InfografisController extends Controller
 
         return view('infografis.index', compact('info', 'dataPenduduk', 'data'));
     }
+
+
 }

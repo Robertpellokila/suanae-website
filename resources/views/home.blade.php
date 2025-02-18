@@ -81,7 +81,7 @@
         <div class="flex flex-col justify-center">
             <p class="text-gray-500 text-lg text-justify" style="text-indent: 4rem;">{!!
                 \Illuminate\Support\Str::words(strip_tags($item->sambutan), 80, '...') !!}</p>
-            <a href="#" class="mt-4 inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
+            <a href="{{ route('sambutan') }}" class="mt-4 inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
                 Selengkapnya
             </a>
         </div>
