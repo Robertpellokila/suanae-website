@@ -6,6 +6,7 @@ use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IdmController;
 use App\Http\Controllers\InfografisController;
+use App\Http\Controllers\ListingController;
 use App\Http\Controllers\PpidController;
 use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
@@ -40,3 +41,5 @@ Route::get('/Profil/Aparatur', [AparaturController::class, 'index'])->name('apar
 Route::get('/Galeri', [GaleriController::class, 'index'])->name('galeri');
 
 Route::get('/idm', [IdmController::class, 'index'])->name('idm');
+
+Route::get('/listing', [ListingController::class, 'index'])->name('listing');

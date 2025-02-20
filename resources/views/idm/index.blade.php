@@ -127,7 +127,7 @@
         <h2 class="text-xl md:text-4xl font-bold text-green-700 p-2 text-start">APB Desa Suanae</h2>
         <div class="p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-green-600 dark:border-green-900"
             data-aos="flip-down" data-aos-duration="1000">
-            <div class="md:flex items-center md:justify-between">
+            <div class="md:grid items-center md:justify-between">
                 <h5 class="text-xl font-semibold text-gray-900 dark:text-white text-center">APBD Desa Suanae Tahun ini</h5>
                 <p class="text-4xl font-bold text-gray-900 dark:text-white text-center uppercase ">Rp.{{ number_format($idm->apbd, 0, ',', '.') }}
                 </p>

@@ -38,6 +38,13 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('listing') }}"
+                        class="block py-2 px-3 rounded-lg md:p-0 font-bold
+            {{ request()->routeIs('listing') ? 'text-white bg-green-700 md:bg-transparent md:text-green-700 dark:text-white md:dark:text-yellow-300' : 'text-green-900 hover:bg-green-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 dark:text-white md:dark:hover:text-yellow-500 dark:hover:bg-green-700 dark:hover:text-white md:dark:hover:bg-transparent' }}">
+                        Listing
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('idm') }}"
                         class="block py-2 px-3 rounded-lg md:p-0 font-bold
             {{ request()->routeIs('idm') ? 'text-white bg-green-700 md:bg-transparent md:text-green-700 dark:text-white md:dark:text-yellow-300' : 'text-green-900 hover:bg-green-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 dark:text-white md:dark:hover:text-yellow-500 dark:hover:bg-green-700 dark:hover:text-white md:dark:hover:bg-transparent' }}">
